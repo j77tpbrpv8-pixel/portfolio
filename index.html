@@ -25,7 +25,7 @@ header a{text-decoration:none}
 header nav a:hover{text-decoration:underline;text-underline-offset:5px}
 .mark{font-family:var(--serif);font-size:28px;letter-spacing:.02em;font-weight:500}
 .hero{min-height:calc(100vh - 56px);display:grid;place-items:end start;text-align:left;padding:48px clamp(16px,2.2vw,36px) clamp(20px,3vh,36px);
-background:linear-gradient(#0000004d,#00000066),url("images/hero.jpg") center/cover no-repeat,#000}
+background:linear-gradient(#0000004d,#00000066),url("hero.jpg") center/cover no-repeat,#000}
 .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4.4vw,76px);line-height:1.08;margin:0 0 28px;max-width:none}.hero h1 span{display:block}
 .pill{display:inline-block;background:#fff;color:#000;padding:16px 32px;border-radius:999px;text-decoration:none;font-weight:500}
 .pill:hover{background:#d9d9d9}
@@ -263,8 +263,66 @@ header nav:last-child{order:3}
 <div class="img"></div><button class="n" aria-label="Next">›</button><div class="cap"></div>
 </div>
 
-<script src="photos.js"></script>
 <script>
+// PHOTO LIST. To add a photo: upload it to the "images" folder on GitHub,
+// then add one line below in the right list and save ("Commit changes").
+//   u = file path, c = caption (used for accessibility and the viewer)
+//   r = width divided by height (Sports, Wildlife and Portraits only; e.g. 2/3 = 0.6667)
+// The tiles on the homepage show the first 6 photos in each list.
+
+var IMG=[
+  {"u": "landscape-01.jpg", "c": "Limestone cliff at dusk"},
+  {"u": "landscape-02.jpg", "c": "Climber on a rock face"},
+  {"u": "landscape-03.jpg", "c": "Lone tree on a hillside"},
+  {"u": "landscape-04.jpg", "c": "Walkers on a path beside a stone wall"},
+  {"u": "landscape-05.jpg", "c": "Stone house on a hill"},
+  {"u": "landscape-06.jpg", "c": "Road bend below a hillside"},
+  {"u": "landscape-07.jpg", "c": "Boat on calm water at sunset"},
+  {"u": "landscape-08.jpg", "c": "Cliff road in golden light"},
+  {"u": "landscape-09.jpg", "c": "Snow-capped mountain peak"}
+];
+var WIMG=[
+  {"u": "wildlife-01.jpg", "c": "Small bird with a white eye-ring on a branch", "r": 0.5976},
+  {"u": "wildlife-02.jpg", "c": "Raptor in flight against a blue sky", "r": 0.997},
+  {"u": "wildlife-03.jpg", "c": "Gull on a wall at dusk", "r": 0.6426},
+  {"u": "wildlife-04.jpg", "c": "Owl perched among leaves", "r": 0.7049},
+  {"u": "wildlife-05.jpg", "c": "Hawk looking up from a tree", "r": 0.7483},
+  {"u": "wildlife-06.jpg", "c": "Finch eating seed at a feeder", "r": 0.5295},
+  {"u": "wildlife-07.jpg", "c": "Heron taking off from the water", "r": 1.114}
+];
+var SIMG=[
+  {"u": "sports-01.jpg", "c": "Coach holding a match ball on the touchline", "r": 0.7087},
+  {"u": "sports-02.jpg", "c": "Player running across the pitch, seen from above", "r": 0.6604},
+  {"u": "sports-03.jpg", "c": "Players watching the game from the sideline", "r": 0.6667},
+  {"u": "sports-04.jpg", "c": "Player dribbling the ball under pressure", "r": 0.6259},
+  {"u": "sports-05.jpg", "c": "Player with the ball, seen from behind at dusk", "r": 0.6122},
+  {"u": "sports-06.jpg", "c": "Player in yellow looking down after the match", "r": 0.6155},
+  {"u": "sports-07.jpg", "c": "Player smiling on the pitch", "r": 0.6667},
+  {"u": "sports-08.jpg", "c": "Player jogging across the pitch", "r": 0.6201}
+];
+var PIMG=[
+  {"u": "portraits-01.jpg", "c": "Boy in silhouette against a sunset sky", "r": 0.6657},
+  {"u": "portraits-02.jpg", "c": "Father and son smiling among pink flowers", "r": 0.6666},
+  {"u": "portraits-03.jpg", "c": "Person crouching at the water's edge at sunset", "r": 0.6527},
+  {"u": "portraits-04.jpg", "c": "Grandmother and baby by the pool", "r": 0.6281},
+  {"u": "portraits-05.jpg", "c": "Two people laughing on a leather sofa", "r": 0.7247},
+  {"u": "portraits-06.jpg", "c": "Woman with a wine glass and a child at a fence", "r": 0.6657},
+  {"u": "portraits-07.jpg", "c": "Four friends smiling outdoors", "r": 0.6657}
+];
+
+// PRESETS PAGE PHOTOS (before/after sliders and samples)
+var PBASE="dusk-before.jpg",PDUSK="dusk-after.jpg";
+var PFROST1="frost-sample-1.jpg";
+var PPRISM1="prism-sample-1.jpg";
+var PFROST2="frost-sample-2.jpg";
+var PFROSTO="frost-before.jpg",PFROSTE="frost-after.jpg";
+var PDUSK2="dusk-sample-2.jpg";
+var PFROST3="frost-sample-3.jpg";
+var PDUSK3="dusk-sample-3.jpg";
+var PPRISMO="prism-before.jpg",PPRISME="prism-after.jpg";
+var PPRISM2="prism-sample-2.jpg";
+var PPRISM3="prism-sample-3.jpg";
+
 var G=[["portraits","Portraits",20,PIMG,1],["sports","Sports",210,SIMG,1],["wildlife","Wildlife",95,WIMG,1],["landscape","Landscape",260,IMG]];
 var layout=["","w","","","","w"],box=document.getElementById("galleries"),lb=document.getElementById("lb"),gal=document.getElementById("gal"),LIM=6,LIST=[],cur=0,SY=0;
 function bg(h,i){return "linear-gradient(135deg,hsl("+(h+i*14)+" 28% 30%),hsl("+(h+i*14+35)+" 32% 9%))"}
