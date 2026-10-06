@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Leo Comaroff — Photography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--ink:#fff;--mute:#a8a8a8;--bar:#fff;--bar-ink:#1a1a1a;--line:#2a2a2a;
+--sans:"Archivo","Helvetica Neue",Arial,sans-serif;--serif:"Newsreader",Georgia,"Times New Roman",serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--ink:#fff}}
+:root[data-theme="dark"]{--bg:#000;--ink:#fff}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5}
+a{color:inherit}
+:focus-visible{outline:2px solid #fff;outline-offset:3px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bar);color:var(--bar-ink);
+display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:14px 24px;gap:16px}
+header nav{display:flex;align-items:center;gap:24px;font-size:14px;letter-spacing:.04em;text-transform:uppercase}
+header nav:last-child{justify-content:flex-end}
+header a{text-decoration:none}
+header nav a:hover{text-decoration:underline;text-underline-offset:5px}
+.mark{font-family:var(--serif);font-size:28px;letter-spacing:.02em;font-weight:500}
+.hero{min-height:calc(100vh - 56px);display:grid;place-items:end start;text-align:left;padding:48px clamp(16px,2.2vw,36px) clamp(20px,3vh,36px);
+background:linear-gradient(#0000004d,#00000066),url("images/hero.jpg") center/cover no-repeat,#000}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4.4vw,76px);line-height:1.08;margin:0 0 28px;max-width:none}.hero h1 span{display:block}
+.pill{display:inline-block;background:#fff;color:#000;padding:16px 32px;border-radius:999px;text-decoration:none;font-weight:500}
+.pill:hover{background:#d9d9d9}
+section.work{padding:96px 24px 24px;max-width:1500px;margin:0 auto}
+h2{font-stretch:125%;font-weight:900;font-size:clamp(48px,10vw,140px);line-height:.95;margin:0 0 40px;color:var(--mute);letter-spacing:-.01em}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+.tile{border:0;padding:0;cursor:pointer;border-radius:6px;overflow:hidden;position:relative;color:#fff;font:inherit;text-align:left;
+grid-column:span 4;aspect-ratio:4/5}
+.tile.w{grid-column:span 8;aspect-ratio:3/2}
+.tile span{position:absolute;left:14px;bottom:12px;font-size:13px;color:#ffffffb0}
+.tile.ph{aspect-ratio:4/5}
+.grid.m{display:block;columns:3;column-gap:12px}
+.grid.m .tile{display:block;width:100%;margin:0 0 12px;break-inside:avoid}
+.tile:hover{filter:brightness(1.2)}
+.about{max-width:1100px;margin:0 auto;padding:120px 24px;display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.about h2{font-size:clamp(40px,7vw,96px);margin:0}
+.about p{font-family:var(--serif);font-size:21px;line-height:1.6;margin:0 0 20px;max-width:60ch}
+.gear{max-width:1500px;margin:0 auto;padding:48px 24px}
+.gear-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gear-list div{border-top:1px solid var(--line);padding-top:20px}
+.gear-list h3{font-stretch:125%;font-weight:900;font-size:22px;margin:0 0 12px}
+.gear-list ul{margin:0;padding:0;list-style:none;font-family:var(--serif);font-size:19px;line-height:1.7}
+.pricing{max-width:1500px;margin:0 auto;padding:48px 24px 120px}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.plan{border:1px solid var(--line);border-radius:6px;padding:32px;display:flex;flex-direction:column;gap:12px}
+.plan h3{font-stretch:125%;font-weight:900;font-size:28px;margin:0}
+.plan .price{font-family:var(--serif);font-size:44px;line-height:1}
+.plan ul{margin:0;padding-left:20px;color:var(--mute)}
+.plan .pill{align-self:flex-start;margin-top:auto}
+.note{color:var(--mute);margin:24px 0 0;max-width:60ch}
+button.pill{border:0;font:inherit;font-weight:500;cursor:pointer}
+.plan .cat{color:var(--mute);font-size:15px}
+.about .pill{margin-top:8px}
+.book{max-width:1100px;margin:0 auto;padding:48px 24px 120px}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.fg label{display:flex;flex-direction:column;gap:8px;font-size:15px;color:var(--mute)}
+.fg .wide{grid-column:1/-1}
+.fg input,.fg select,.fg textarea{font:inherit;color:#fff;background:transparent;border:1px solid #555;border-radius:6px;padding:14px}
+.fg select option{color:#000}
+.fg input:focus-visible,.fg select:focus-visible,.fg textarea:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.sg{display:flex;align-items:center;gap:10px;width:fit-content;border:1px solid #ffffff55;border-radius:999px;padding:8px 18px;font-size:14px}
+.sg .dot{width:8px;height:8px;border-radius:50%;background:#ff4d4d}
+.hero .sg{margin:28px auto 0}
+.lead{font-family:var(--serif);font-size:21px;max-width:60ch;margin:24px 0 0}
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:32px 0}
+.svc button{font:inherit;color:#fff;text-align:left;background:transparent;border:1px solid #555;border-radius:6px;padding:24px;cursor:pointer}
+.svc button[aria-pressed=true]{background:#fff;color:#000;border-color:#fff}
+.svc b{display:block;font-stretch:125%;font-weight:900;font-size:26px}
+.svc span{display:block;opacity:.7;font-size:15px;margin-top:4px}
+.inq{display:grid;grid-template-columns:2fr 1fr;gap:32px;align-items:start}
+#dyn{display:contents}
+.fg input{color-scheme:dark}
+.fg label.chk{flex-direction:row;align-items:center;color:#fff}
+.sum{position:sticky;top:96px;border:1px solid var(--line);border-radius:6px;padding:24px}
+.sum h3{font-stretch:125%;font-weight:900;font-size:22px;margin:0 0 12px}
+.sum ul{list-style:none;margin:0;padding:0;font-size:15px}
+.sum li{padding:8px 0;border-top:1px solid var(--line)}
+.sum li span{display:block;color:var(--mute);font-size:13px}
+.vm{position:absolute;inset:0;display:grid;place-items:center;background:#000b;font-stretch:125%;font-weight:900;font-size:clamp(20px,2.4vw,32px);text-align:center;padding:16px;color:#fff}
+.tile:hover .vm{background:#000e}
+.gp{max-width:1500px;margin:0 auto;padding:48px 24px 96px}
+.back{display:inline-block;margin-bottom:32px;color:var(--mute);text-decoration:none}
+.back:hover{color:#fff}
+.sgband{text-align:center;padding:96px 24px;border-top:1px solid var(--line)}
+.sgband .sg{margin:0 auto 24px}
+.sgband h3{font-stretch:125%;font-weight:900;font-size:clamp(32px,6vw,72px);margin:0;line-height:1}
+.sgband p{font-family:var(--serif);font-size:21px;color:var(--mute);margin:20px auto 0;max-width:50ch}
+.fg small{font-size:13px;color:#8a8a8a}
+.how{max-width:1500px;margin:0 auto;padding:48px 24px 24px}
+.steps{list-style:none;margin:0 0 56px;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;counter-reset:st}
+.steps li{counter-increment:st;border-top:1px solid var(--line);padding-top:20px}
+.steps li::before{content:counter(st);display:block;font-stretch:125%;font-weight:900;font-size:44px;color:var(--mute);line-height:1;margin-bottom:12px}
+.steps b{display:block;font-stretch:125%;font-weight:900;font-size:22px;margin-bottom:6px}
+.steps span{color:var(--mute);font-family:var(--serif);font-size:19px}
+.faq{max-width:800px}
+.faq details{border-top:1px solid var(--line);padding:18px 0}
+.faq summary{cursor:pointer;font-size:19px}
+.faq p{margin:12px 0 0;color:var(--mute);font-family:var(--serif);font-size:19px}
+.note a{color:#fff}
+.est{margin-top:16px;border-top:1px solid #fff;padding-top:12px;font-size:15px}
+.est div{display:flex;justify-content:space-between;gap:12px;padding:4px 0}
+.est .tot{font-weight:700;font-size:18px;padding-top:10px}
+.est small{display:block;color:#8a8a8a;font-size:13px;margin-top:8px}
+footer{border-top:1px solid var(--line);padding:32px 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--mute);font-size:14px}
+#lb{position:fixed;inset:0;background:#000f;z-index:50;display:none;place-items:center;padding:24px}
+#lb.open{display:grid}
+#lb .img{width:min(92vw,1100px);aspect-ratio:3/2;max-height:80vh;border-radius:6px}
+#lb button{position:absolute;background:none;border:0;color:#fff;font-size:34px;cursor:pointer;padding:16px}
+#lb .x{top:8px;right:8px}#lb .p{left:8px}#lb .n{right:8px}
+#lb .cap{position:absolute;bottom:20px;color:var(--mute);font-size:14px}
+@media (max-width:800px){
+header{grid-template-columns:1fr;justify-items:center;gap:8px;padding:12px 16px}
+header nav{flex-wrap:wrap;justify-content:center!important;gap:6px 16px;font-size:12px}
+header nav:last-child{order:3}
+.tile,.tile.w{grid-column:span 12;aspect-ratio:4/3}
+.about{grid-template-columns:1fr;padding:72px 24px}
+.plans{grid-template-columns:1fr}
+.gear-list{grid-template-columns:1fr}
+.hero{min-height:80vh}
+.tile.ph{aspect-ratio:4/5}
+.grid.m{columns:1}
+.fg{grid-template-columns:1fr}
+.steps{grid-template-columns:1fr}
+.svc,.inq{grid-template-columns:1fr}
+.sum{position:static}}
+
+.fx{position:relative;isolation:isolate;background-size:cover;background-position:center}
+.fx::after{content:"";position:absolute;inset:0;background:var(--t,transparent);opacity:var(--o,0);mix-blend-mode:soft-light;pointer-events:none}
+.ps h2{font-family:var(--serif);font-weight:400;font-size:clamp(36px,5vw,64px);margin:0 0 12px}
+.ps .lead{margin:0 0 32px}
+.ba{position:relative;width:100%;max-width:1100px;aspect-ratio:2111/1681;overflow:hidden;border-radius:4px;background:#111;user-select:none;touch-action:pan-y}
+.ba .fx{position:absolute;inset:0}
+.ba .af{clip-path:inset(0 0 0 var(--p,50%))}
+.ba .hd{position:absolute;top:0;bottom:0;left:var(--p,50%);width:2px;margin-left:-1px;background:#fff;pointer-events:none}
+.ba .hd::after{content:"\2194";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;font-size:20px}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba:focus-within{outline:2px solid #fff;outline-offset:3px}
+.ba .tag{position:absolute;top:14px;padding:6px 12px;border-radius:999px;background:#000000a0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;pointer-events:none}
+.ba .tag.l{left:14px}.ba .tag.r{right:14px}
+.pt{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 8px}
+.pt button{background:none;color:#fff;border:1px solid #ffffff55;border-radius:999px;padding:10px 20px;font:inherit;cursor:pointer}
+.pt button[aria-pressed=true]{background:#fff;color:#000;border-color:#fff}
+.pdesc{color:var(--mute);margin:8px 0 0;max-width:60ch;min-height:3em}
+.ps h3{font-family:var(--serif);font-weight:400;font-size:28px;margin:56px 0 20px}
+.sm{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.sm .fx{aspect-ratio:4/5;border-radius:4px}
+.pcta{margin-top:56px;display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.pcta span{color:var(--mute)}
+@media(max-width:720px){.sm{grid-template-columns:repeat(2,1fr)}}
+
+.burger{background:none;border:0;color:inherit;cursor:pointer;padding:0;display:grid;place-items:center;width:28px;height:28px}
+.burger:focus-visible,.mx:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+
+.dd{position:fixed;z-index:20;right:16px;top:70px;width:min(600px,calc(100vw - 32px));display:grid;grid-template-columns:1fr 220px;background:#0b0b0bf2;color:#fff;border:1px solid #ffffff22;border-radius:10px;overflow:hidden;box-shadow:0 24px 60px #000a;backdrop-filter:blur(10px);opacity:0;visibility:hidden;transform:translateY(-8px) scale(.98);transform-origin:top right;transition:opacity .25s,transform .25s,visibility 0s .25s}
+.dd.open{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .25s,visibility 0s}
+.dd nav{display:flex;flex-direction:column;padding:12px 8px}
+.dd nav a{color:#fff;text-decoration:none;font-family:var(--serif);font-size:18px;line-height:1;padding:9px 14px;border-radius:6px;display:flex;align-items:center;justify-content:space-between;opacity:0;transform:translateX(12px);transition:opacity .3s,transform .3s,background .2s}
+.dd nav a::after{content:"\2192";font-family:system-ui,sans-serif;font-size:18px;opacity:0;transform:translateX(-8px);transition:opacity .2s,transform .2s;color:#ff8a65}
+.dd nav a:hover,.dd nav a:focus-visible{background:#ffffff14;outline:none}
+.dd nav a:hover::after,.dd nav a:focus-visible::after{opacity:1;transform:none}
+.dd.open nav a{opacity:1;transform:none}
+.dd.open nav a:nth-child(2){transition-delay:.03s}.dd.open nav a:nth-child(3){transition-delay:.06s}.dd.open nav a:nth-child(4){transition-delay:.09s}.dd.open nav a:nth-child(5){transition-delay:.12s}.dd.open nav a:nth-child(6){transition-delay:.15s}.dd.open nav a:nth-child(7){transition-delay:.18s}.dd.open nav a:nth-child(8){transition-delay:.21s}.dd.open nav a:nth-child(9){transition-delay:.24s}
+.pv{position:relative;min-height:300px;background:#151515}
+.pi{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .35s,transform .8s;transform:scale(1.06)}
+.pi.on{opacity:1;transform:scale(1)}
+.pv::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,#000000b0)}
+.pc{position:absolute;left:16px;right:16px;bottom:16px;z-index:1}
+.pc b{display:block;font-family:var(--serif);font-weight:400;font-size:20px}
+.pc span{display:block;font-size:12px;color:#ccc;margin-top:4px;line-height:1.4}
+@media (max-width:520px){.dd{grid-template-columns:1fr}.pv{display:none}}
+@media (prefers-reduced-motion:reduce){.dd,.dd nav a,.pi{transition:none!important}}
+.sm .blank{background:#141414;display:grid;place-items:center;color:#555;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+<nav aria-label="Galleries"><a href="#portraits">Portraits</a><a href="#sports">Sports</a><a href="#wildlife">Wildlife</a><a href="#landscape">Landscape</a></nav>
+<a class="mark" href="#top" id="top">LEO COMAROFF</a>
+<nav aria-label="Info"><a href="#about">About</a><a href="#equipment">Equipment</a><a href="#contact">Contact</a><button class="burger" id="menubtn" aria-label="Open menu" aria-expanded="false" aria-controls="dd"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></button></nav>
+</header>
+<div id="dd" class="dd" role="menu" aria-label="All pages" aria-hidden="true"><nav><a href="#portraits" data-k="portraits">Portraits</a><a href="#sports" data-k="sports">Sports</a><a href="#wildlife" data-k="wildlife">Wildlife</a><a href="#landscape" data-k="landscape">Landscape</a><a href="#about" data-k="about">About</a><a href="#equipment" data-k="equipment">Equipment</a><a href="#/presets" data-k="presets">Presets</a><a href="#pricing" data-k="pricing">Book a shoot</a><a href="#contact" data-k="contact">Contact</a></nav>
+<div class="pv"><div class="pi a"></div><div class="pi b"></div><div class="pc"><b></b><span></span></div></div></div>
+<main id="mainc">
+<div class="hero"><div>
+<h1><span>Light,</span><span>motion,</span><span>wild places.</span></h1>
+<a class="pill" href="#portraits">View the work</a>
+</div></div>
+<div id="galleries"></div>
+<div class="about" id="about">
+<h2>About</h2>
+<div>
+<p>I'm Leo Comaroff, a photographer based in Singapore and a high school student. I shoot portraits, sports, wildlife and landscapes.</p>
+<p>I take on portrait sessions, sports coverage and custom shoots across Singapore. Send an inquiry and we'll plan it together.</p>
+<a class="pill" href="#pricing">Book a shoot</a>
+</div>
+</div>
+<section class="gear" id="equipment">
+<h2>Equipment</h2>
+<div class="gear-list">
+<div><h3>Camera</h3><ul><li>Nikon Z8</li></ul></div>
+<div><h3>Lenses</h3><ul><li>Sigma 24-70mm f/2.8 Art</li><li>70-200mm f/2.8 GM II</li><li>200-600mm f/5.6-6.3</li></ul></div>
+<div><h3>Drone</h3><ul><li>DJI Lito X1</li><li>Available as an add-on</li></ul></div>
+</div>
+</section>
+<section class="how" id="how">
+<h2>How it works</h2>
+<ol class="steps">
+<li><b>Inquire</b><span>Choose your shoot and send an inquiry.</span></li>
+<li><b>Chat</b><span>We talk it through and arrange a day.</span></li>
+<li><b>Shoot</b><span>We meet in Singapore and make the photos.</span></li>
+<li><b>Delivery</b><span>Photos arrive in 48 to 72 hours. Rush 24-hour delivery costs extra.</span></li>
+</ol>
+<div class="faq">
+<details><summary>What does edited mean?</summary><p>Edited photos get simple touch-ups and colour corrections.</p></details>
+<details><summary>What are unedited photos?</summary><p>The raw photos, straight from the camera, with no editing.</p></details>
+<details><summary>How long until I get my photos?</summary><p>Standard delivery takes 48 to 72 hours.</p></details>
+<details><summary>Can I get them faster?</summary><p>Yes. Rush delivery within 24 hours is available for an extra fee.</p></details>
+<details><summary>Where do you shoot?</summary><p>In Singapore only.</p></details>
+<details><summary>Can you shoot with a drone?</summary><p>A drone add-on is available at extra cost, subject to airspace rules and venue permission.</p></details>
+</div>
+</section>
+<section class="pricing" id="pricing">
+<h2>Pricing</h2>
+<div class="sg"><span class="dot"></span>Shoots in Singapore only</div>
+<p class="lead">Choose the kind of shoot, set your options, and send an inquiry. I'll reply with a quote and available dates.</p>
+<div class="svc" id="svc" role="group" aria-label="Type of shoot"></div>
+<div class="inq">
+<form id="bf" class="fg">
+<div id="dyn"></div>
+<label>Preferred date<input type="date" id="dt" data-l="Preferred date" required></label>
+<label>Time of day<select data-l="Time of day"><option>Morning</option><option>Afternoon</option><option>Evening</option><option>Flexible</option></select></label>
+<label class="wide">Area or venue in Singapore<input type="text" data-l="Area or venue" placeholder="For example, East Coast Park"></label>
+<label>Your name<input type="text" data-l="Name" required autocomplete="name"></label>
+<label>Email<input type="email" data-l="Email" required autocomplete="email"></label>
+<label class="wide">Phone or WhatsApp (optional)<input type="tel" data-l="Phone" autocomplete="tel"></label>
+<label class="wide">Notes<textarea data-l="Notes" rows="4" placeholder="Anything else I should know: team, event, ideas, references"></textarea></label>
+<label class="wide chk"><input type="checkbox" required> The shoot will be in Singapore</label>
+<div class="wide"><button class="pill" type="submit">Send inquiry</button>
+<p class="note">This is an inquiry, not a confirmed booking. I'll reply to confirm price, date and details. Prefer to chat first? <a href="https://wa.me/6580489389?text=Hi%20Leo%2C%20I%27d%20like%20to%20ask%20about%20a%20shoot." target="_blank" rel="noopener">Message me on WhatsApp</a>.</p>
+<div id="done" hidden><p class="note" id="st"></p><a class="pill" id="ml" href="#">Open in email</a></div></div>
+</form>
+<aside class="sum" aria-live="polite"><h3>Your inquiry</h3><ul id="sl"></ul><div id="est" class="est"></div></aside>
+</div>
+</section>
+</main>
+<div id="gal" hidden></div>
+<section class="sgband"><div class="sg"><span class="dot"></span>Singapore only</div>
+<h3>Shooting in Singapore only.</h3>
+<p>Every portrait, sports and custom shoot takes place in Singapore.</p></section>
+<footer id="contact"><span><a href="mailto:leocomaroff.photography@gmail.com">leocomaroff.photography@gmail.com</a></span><span><a href="https://wa.me/6580489389?text=Hi%20Leo%2C%20I%27d%20like%20to%20ask%20about%20a%20shoot." target="_blank" rel="noopener">WhatsApp 8048 9389</a></span><span><a href="https://www.instagram.com/leoc_flicks" target="_blank" rel="noopener">Instagram @leoc_flicks</a></span><span><a href="#/presets">Lightroom presets</a></span><span>© 2026 Leo Comaroff</span></footer>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+<button class="x" aria-label="Close">×</button><button class="p" aria-label="Previous">‹</button>
+<div class="img"></div><button class="n" aria-label="Next">›</button><div class="cap"></div>
+</div>
+
+<script src="photos.js"></script>
+<script>
+var G=[["portraits","Portraits",20,PIMG,1],["sports","Sports",210,SIMG,1],["wildlife","Wildlife",95,WIMG,1],["landscape","Landscape",260,IMG]];
+var layout=["","w","","","","w"],box=document.getElementById("galleries"),lb=document.getElementById("lb"),gal=document.getElementById("gal"),LIM=6,LIST=[],cur=0,SY=0;
+function bg(h,i){return "linear-gradient(135deg,hsl("+(h+i*14)+" 28% 30%),hsl("+(h+i*14+35)+" 32% 9%))"}
+function norm(g){if(g[0]==="portraits"){var l=g[3].map(function(it){return{u:it.u,r:it.r,cap:it.c}});for(var i=l.length;i<6;i++)l.push({cls:"",bg:bg(g[2],i),cap:"Portraits "+(i+1)});return l}return g[3].length?g[3].map(function(it){return{u:it.u,r:it.r,cap:it.c}}):layout.map(function(c,i){return{cls:c,bg:bg(g[2],i),cap:g[1]+" "+(i+1)}})}
+function mk(g,it,k,list,more){var photo=!!it.u,b=document.createElement("button");
+b.className="tile "+(photo?"ph":it.cls);
+b.style.background=photo?'url("'+it.u+'") center/cover no-repeat':it.bg;
+b.setAttribute("aria-label",it.cap);
+if(photo&&it.r)b.style.aspectRatio=it.r;
+if(!photo)b.innerHTML="<span>"+it.cap+"</span>";
+if(more){b.setAttribute("aria-label","Check out the rest of the "+g[1]+" photos");var v=document.createElement("div");v.className="vm";v.textContent="Check out the rest";b.appendChild(v);
+b.onclick=function(){SY=window.scrollY;location.hash="#/"+g[0]}}
+else b.onclick=function(){show(list,k)};
+return b}
+G.forEach(function(g){var list=norm(g),s=document.createElement("section");s.className="work";s.id=g[0];
+s.innerHTML='<h2>'+g[1]+'</h2><div class="grid"></div>';var grid=s.querySelector(".grid");if(g[4])grid.className="grid m";
+list.slice(0,LIM).forEach(function(it,k){grid.appendChild(mk(g,it,k,list,list.length>LIM&&k===LIM-1))});box.appendChild(s)});
+function gallery(g){var list=norm(g);gal.innerHTML='<div class="gp"><a class="back" href="#">\u2190 Back to portfolio</a><h2>'+g[1]+'</h2><div class="grid'+(g[4]?" m":"")+'"></div></div>';
+var grid=gal.querySelector(".grid");list.forEach(function(it,k){grid.appendChild(mk(g,it,k,list,false))})}
+function show(list,i){LIST=list;cur=(i+list.length)%list.length;var it=LIST[cur],im=lb.querySelector(".img");
+im.style.cssText=it.u?'height:82vh;aspect-ratio:auto;background:url("'+it.u+'") center/contain no-repeat':'background:'+it.bg;
+lb.querySelector(".cap").textContent=it.cap;lb.classList.add("open");lb.querySelector(".x").focus()}
+function step(d){show(LIST,cur+d)}
+lb.querySelector(".x").onclick=function(){lb.classList.remove("open")};
+lb.querySelector(".p").onclick=function(){step(-1)};
+lb.querySelector(".n").onclick=function(){step(1)};
+document.addEventListener("keydown",function(e){if(!lb.classList.contains("open"))return;
+if(e.key==="Escape")lb.classList.remove("open");if(e.key==="ArrowLeft")step(-1);if(e.key==="ArrowRight")step(1)});
+var PS=[{n:"Frost",base:PFROSTO,img:PFROSTE,ar:"3204/4937",mw:"560px",sm:[PFROST1,PFROST2,PFROST3],d:"Clean, crisp blues with a little extra contrast. Good for skies, water and city scenes.",f:"saturate(.92) contrast(1.1) brightness(1.02)",t:"#2d6cdf",o:.45},
+{n:"Dusk",img:PDUSK,sm:[PDUSK,PDUSK2,PDUSK3],d:"A calmer, teal-leaning look with softer highlights. Works well for portraits and moody scenes.",f:"saturate(.85) contrast(1.05) brightness(1.04) hue-rotate(-8deg)",t:"#1f9aa0",o:.5},
+{n:"Prism",base:PPRISMO,img:PPRISME,ar:"2833/2035",mw:"1100px",sm:[PPRISM1,PPRISM2,PPRISM3],d:"Rich, punchy colour with strong contrast. Made for sunsets, sports and wildlife.",f:"saturate(1.5) contrast(1.12) brightness(1.02)",t:"#ff5a36",o:.2},
+{n:"Coming soon",x:1,d:"Warm golden tones with a soft glow. Good for golden hour and warm skin tones.",f:"saturate(1.1) contrast(1.05) sepia(.18) brightness(1.04)",t:"#f0a830",o:.55}];
+function fxs(el,u,pr){el.className="fx"+(el.className.indexOf(" ")>-1?" "+el.className.split(" ").slice(1).join(" "):"");el.style.backgroundImage='url("'+u+'")';if(pr){el.style.filter=pr.f;el.style.setProperty("--t",pr.t);el.style.setProperty("--o",pr.o)}else{el.style.filter="";el.style.setProperty("--o",0)}}
+function presets(){var base=PBASE,sm=[IMG[1],WIMG[0],SIMG[0],PIMG[0],IMG[2],WIMG[1]].filter(function(x){return x&&x.u}),cur=0;
+gal.innerHTML='<div class="gp ps"><a class="back" href="#">\u2190 Back to portfolio</a><h2>Lightroom Presets</h2><p class="lead">A standard pack of four presets that work on any kind of photo. Three are ready and the fourth is on the way. Drag the slider to compare the original with the edit.</p>'+
+'<div class="ba"><div class="fx bf"></div><div class="fx af"></div><div class="hd"></div><span class="tag l">Original</span><span class="tag r">Edited</span><input type="range" min="0" max="100" value="50" aria-label="Before and after slider"></div>'+
+'<div class="pt"></div><p class="pdesc"></p><h3>Samples</h3><div class="sm"></div>'+
+'<div class="pcta"><a class="pill" href="https://wa.me/6580489389?text=Hi%20Leo%2C%20I%27m%20interested%20in%20your%20Lightroom%20presets." target="_blank" rel="noopener">Ask about the pack</a><span>S$15 for all four presets</span></div></div>';
+var ba=gal.querySelector(".ba"),bf=ba.querySelector(".bf"),af=ba.querySelector(".af"),rg=ba.querySelector("input"),pt=gal.querySelector(".pt"),pd=gal.querySelector(".pdesc"),smb=gal.querySelector(".sm");
+rg.oninput=function(){ba.style.setProperty("--p",rg.value+"%")};
+
+function set(i){cur=i;var pr=PS[i];var bs=pr.base||base;ba.style.aspectRatio=pr.ar||"2111/1681";ba.style.maxWidth=pr.mw||"1100px";fxs(bf,bs,null);fxs(af,pr.img||bs,pr.img?null:pr);af.classList.add("af");pd.textContent=pr.d;
+Array.prototype.forEach.call(pt.children,function(b,k){b.setAttribute("aria-pressed",k===i)});
+smb.innerHTML="";for(var k=0;k<3;k++){var d=document.createElement("div");if(pr.sm&&pr.sm[k]){d.className="fx";fxs(d,pr.sm[k],null)}else{d.className="fx blank";d.textContent="Sample"}smb.appendChild(d)}}
+PS.forEach(function(pr,i){var b=document.createElement("button");b.textContent=pr.n;if(pr.x){b.disabled=true;b.style.opacity=".45";b.style.cursor="default"}else b.onclick=function(){set(i)};pt.appendChild(b)});set(1)}
+function route(){var h=location.hash,m=/^#\/(\w+)/.exec(h),main=document.getElementById("mainc");
+if(m){if(m[1]==="presets"){presets();main.hidden=true;gal.hidden=false;lb.classList.remove("open");window.scrollTo(0,0);return}var g=G.filter(function(x){return x[0]===m[1]})[0];if(g){gallery(g);main.hidden=true;gal.hidden=false;lb.classList.remove("open");window.scrollTo(0,0);return}}
+if(!gal.hidden){gal.hidden=true;main.hidden=false;var t=h.length>1&&document.getElementById(h.slice(1));if(t)t.scrollIntoView();else window.scrollTo(0,SY)}}
+window.addEventListener("hashchange",route);route();
+var dd=document.getElementById("dd"),mb=document.getElementById("menubtn"),hdr=document.querySelector("header"),ddt=null,pis=dd.querySelectorAll(".pi"),pf=0,
+PVI={portraits:["Portraits","Faces, moments and people being themselves.",PIMG[0].u],sports:["Sports","Fast action, frozen at the right moment.",SIMG[0].u],wildlife:["Wildlife","Birds and animals in their own space.",WIMG[0].u],landscape:["Landscape","Skies, coast and wide open places.",IMG[0].u],about:["About","A Singapore photographer, still learning fast.",""],equipment:["Equipment","Nikon Z8, three lenses and a drone.",""],presets:["Presets","Lightroom looks: Frost, Dusk, Prism.",PBASE],pricing:["Book a shoot","Send an inquiry and we will chat.",""],contact:["Contact","Email, WhatsApp or Instagram.",""]};
+function pv(k){var d=PVI[k];if(!d)return;dd.querySelector(".pc b").textContent=d[0];dd.querySelector(".pc span").textContent=d[1];if(d[2]){pf=1-pf;var n=pis[pf],o=pis[1-pf];n.style.backgroundImage='url("'+d[2]+'")';n.classList.add("on");o.classList.remove("on")}else{pis[0].classList.remove("on");pis[1].classList.remove("on")}}
+function ddo(o){clearTimeout(ddt);if(o){dd.style.top=Math.round(hdr.getBoundingClientRect().bottom+6)+"px";pv("portraits")}dd.classList.toggle("open",o);dd.setAttribute("aria-hidden",!o);mb.setAttribute("aria-expanded",o)}
+function ddc(){clearTimeout(ddt);ddt=setTimeout(function(){ddo(false)},280)}
+var dot=0;mb.addEventListener("mouseenter",function(){dot=Date.now();ddo(true)});mb.addEventListener("mouseleave",ddc);dd.addEventListener("mouseenter",function(){clearTimeout(ddt)});dd.addEventListener("mouseleave",ddc);
+mb.addEventListener("click",function(){if(Date.now()-dot<500){ddo(true);return}ddo(!dd.classList.contains("open"))});
+dd.querySelectorAll("nav a").forEach(function(a){a.addEventListener("mouseenter",function(){pv(a.dataset.k)});a.addEventListener("focus",function(){pv(a.dataset.k)});a.addEventListener("click",function(){ddo(false)})});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&dd.classList.contains("open")){ddo(false);mb.focus()}});
+document.addEventListener("click",function(e){if(dd.classList.contains("open")&&!dd.contains(e.target)&&!mb.contains(e.target))ddo(false)});
+window.addEventListener("scroll",function(){if(dd.classList.contains("open"))ddo(false)},{passive:true});
+var TO="leocomaroff.photography@gmail.com";
+var UN=["None","A small selection","All of them"],DV=["Standard (48 to 72 hours)","Rush (24 hours, extra fee)"];
+var CF={"Portraits":[["Session length",["15 minutes","30 minutes","45 minutes"]],["Edited photos",{min:2},"Simple touch-ups and colour corrections. 2 are included, extra photos are S$3 each."],["Unedited photos",UN,"Raw photos, straight from the camera."],["Number of people",["1","2","3 to 5","6 or more"]],["Purpose",["Personal","Graduation","Professional headshot","Couple or family","Other"]],["Delivery speed",DV]],
+"Sports":[["Sport",["Football","Basketball","Rugby","Cricket","Tennis","Badminton","Volleyball","Swimming","Running or athletics","Martial arts","Hockey","Other (add in notes)"]],["What for",["Single match","Training session","Tournament","Several matches"]],["Coverage length",["1 hour","2 hours","Half day","Full day"]],["Edited photos",{min:10},"Simple touch-ups and colour corrections. 10 are included, extra photos are S$1.50 each."],["Unedited photos",UN,"Raw photos, straight from the camera."],["Venue",["Outdoor","Indoor"]],["Delivery speed",DV]],
+"Something else":[["What do you need",["Prints","Commercial or licensing","Event coverage","Wildlife or landscape commission","Something else"]]]};
+var SV=[["Portraits","15 to 45 minute sessions"],["Sports","Matches, training and events"],["Something else","Prints, licensing, custom work"]];
+var cur="Portraits",bf=document.getElementById("bf"),dyn=document.getElementById("dyn"),svc=document.getElementById("svc"),sl=document.getElementById("sl");
+function field(l,o,h){var c=Array.isArray(o)?'<select data-l="'+l+'">'+o.map(function(x){return"<option>"+x+"</option>"}).join("")+'</select>':'<input type="number" data-l="'+l+'" min="'+o.min+'" step="1" value="'+o.min+'" inputmode="numeric" required>';
+return '<label>'+l+c+(h?'<small>'+h+'</small>':'')+'</label>'}
+var PR={p:{"15 minutes":40,"30 minutes":70,"45 minutes":100},s:{"1 hour":70,"2 hours":130,"Half day":240,"Full day":400},rawS:10,rawA:30,exP:3,exS:1.5,rush:0.25,rushMin:20,drone:40};
+function val(l){var e=bf.querySelector('[data-l="'+l+'"]');return e?e.value:""}
+function money(x){return"S$"+(x%1?x.toFixed(2):x)}
+function est(){if(cur==="Something else")return null;var L=[],t=0,p=cur==="Portraits",inc=p?2:10,key=p?val("Session length"):val("Coverage length"),base=(p?PR.p:PR.s)[key]||0;
+L.push([(p?key.replace(" minutes","-minute")+" session":key+" of coverage")+" ("+inc+" edited photos included)",base]);t+=base;
+var n=Math.max(parseInt(val("Edited photos"),10)||inc,inc),x=n-inc;if(x>0){var c=x*(p?PR.exP:PR.exS);L.push([x+" extra edited photo"+(x>1?"s":""),c]);t+=c}
+var u=val("Unedited photos");if(u==="A small selection"){L.push(["Unedited selection",PR.rawS]);t+=PR.rawS}if(u==="All of them"){L.push(["All unedited photos",PR.rawA]);t+=PR.rawA}
+if(val("Delivery speed").indexOf("Rush")===0){var r=Math.max(Math.round(t*PR.rush),PR.rushMin);L.push(["Rush delivery",r]);t+=r}
+if(val("Drone add-on").indexOf("Add")===0){L.push(["Drone add-on",PR.drone]);t+=PR.drone}
+return{L:L,t:t}}
+function gather(){var r=[["Shoot type",cur]];bf.querySelectorAll("[data-l]").forEach(function(e){r.push([e.dataset.l,e.value.trim()||"Not given"])});return r}
+function summary(){sl.textContent="";gather().forEach(function(r){var li=document.createElement("li"),k=document.createElement("span");k.textContent=r[0];li.appendChild(k);li.appendChild(document.createTextNode(r[1]));sl.appendChild(li)})
+var eb=document.getElementById("est"),e=est();eb.textContent="";
+if(!e){eb.textContent="Price on request";return}
+e.L.forEach(function(r){var d=document.createElement("div"),a=document.createElement("span"),b=document.createElement("span");a.textContent=r[0];b.textContent=money(r[1]);d.appendChild(a);d.appendChild(b);eb.appendChild(d)});
+var tt=document.createElement("div");tt.className="tot";tt.innerHTML="<span>Estimated total</span><span></span>";tt.lastChild.textContent=money(e.t);eb.appendChild(tt);
+var sm=document.createElement("small");sm.textContent="This is an estimate. I will confirm the final quote.";eb.appendChild(sm)}
+function draw(){dyn.innerHTML=CF[cur].map(function(f){return field(f[0],f[1],f[2])}).join("")+(cur!=="Something else"?field("Anyone under 18 being photographed?",["No","Yes (a parent or guardian will confirm)"]):"")+field("Drone add-on",["No drone","Add drone shots (extra cost)"],"Drone flights depend on local airspace rules and venue permission. I will confirm what is possible before booking.");
+svc.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.s===cur)});summary()}
+SV.forEach(function(v){var b=document.createElement("button");b.type="button";b.dataset.s=v[0];b.innerHTML="<b>"+v[0]+"</b><span>"+v[1]+"</span>";b.onclick=function(){cur=v[0];draw()};svc.appendChild(b)});
+document.getElementById("dt").min=new Date().toISOString().slice(0,10);
+bf.addEventListener("input",summary);
+var EP="https://formsubmit.co/ajax/"+TO;
+bf.onsubmit=function(e){e.preventDefault();
+var rows=gather(),btn=bf.querySelector("button[type=submit]"),st=document.getElementById("st"),ml=document.getElementById("ml"),dn=document.getElementById("done");
+var ee=est();rows.push(["Estimated price",ee?money(ee.t):"On request"]);var body=rows.map(function(r){return r[0]+": "+r[1]}).join("\n");
+ml.href="mailto:"+TO+"?subject="+encodeURIComponent("Inquiry: "+cur)+"&body="+encodeURIComponent(body);
+var data={_subject:"New inquiry: "+cur,_template:"table"};
+rows.forEach(function(r){data[r[0]==="Email"?"email":r[0]]=r[1]});
+btn.disabled=true;btn.textContent="Sending...";
+function fin(ok){btn.disabled=false;btn.textContent="Send inquiry";dn.hidden=false;ml.style.display=ok?"none":"";
+st.textContent=ok?"Inquiry sent. I will reply to "+data.email+" soon.":"The inquiry could not be sent automatically. Press the button to send it from your email app.";
+if(ok){bf.reset();summary()}dn.scrollIntoView({block:"center"})}
+fetch(EP,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(data)})
+.then(function(r){return r.json()}).then(function(j){fin(j.success===true||j.success==="true")}).catch(function(){fin(false)})};
+draw();
+</script>
+</body>
+</html>
